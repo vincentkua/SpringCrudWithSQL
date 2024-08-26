@@ -104,9 +104,15 @@ public class PokemonController {
 
         // Check SQL result and return it as response entity
         if (rowsupdated == 1) {
-            return ResponseEntity.status(HttpStatus.OK).body("Data Inserted");
+            JsonObject respondPayload = Json.createObjectBuilder()
+            .add("status", "Data Inserted")
+            .build();
+            return ResponseEntity.status(HttpStatus.OK).body(respondPayload.toString());
         } else {
-            return ResponseEntity.status(HttpStatus.valueOf(404)).body("Data insert Failed");
+            JsonObject respondPayload = Json.createObjectBuilder()
+            .add("status", "Data insert Failed")
+            .build();
+            return ResponseEntity.status(HttpStatus.valueOf(404)).body(respondPayload.toString());
         }
     }
 
@@ -139,9 +145,15 @@ public class PokemonController {
 
         // Check SQL result and return it as response entity
         if (rowsupdated == 1) {
-            return ResponseEntity.status(HttpStatus.OK).body("Pokemon Deleted");
+            JsonObject respondPayload = Json.createObjectBuilder()
+            .add("status", "Pokemon Deleted")
+            .build();
+            return ResponseEntity.status(HttpStatus.OK).body(respondPayload.toString());
         } else {
-            return ResponseEntity.status(HttpStatus.valueOf(404)).body("Pokemon Delete Failed");
+            JsonObject respondPayload = Json.createObjectBuilder()
+            .add("status", "Pokemon Delete Failed")
+            .build();
+            return ResponseEntity.status(HttpStatus.valueOf(404)).body(respondPayload.toString());
         }
 
     }
